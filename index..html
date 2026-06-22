@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صيدلية الصحة - PharmaCare</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        /* Header & Navbar */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-nav {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: white !important;
+            gap: 10px;
+        }
+
+        .navbar-brand img {
+            height: 50px;
+            width: auto;
+            background: white;
+            padding: 5px;
+            border-radius: 8px;
+        }
+
+        .navbar-brand span {
+            color: white;
+        }
+
+        .nav-link {
+            color: white !important;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin: 0 5px;
+        }
+
+        .nav-link:hover {
+            color: #ffd700 !important;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 0 50px 0;
+            margin-top: 70px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(20px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-section h1 {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-section p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .search-box {
+            background: white;
+            border-radius: 50px;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 30px auto;
+            width: fit-content;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .search-box input {
+            border: none;
+            padding: 10px;
+            width: 400px;
+            outline: none;
+            font-size: 16px;
+        }
+
+        .search-box button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 8px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .search-box button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Services Cards */
+        .services {
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .service-card-body {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .service-card-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #667eea;
+        }
+
+        .discount-badge {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        /* Pharmacy Info Section */
+        .pharmacy-info {
+            background: white;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin: 50px 0;
+        }
+
+        .pharmacy-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .pharmacy-logo {
+            height: 100px;
+            width: auto;
+            margin-bottom: 20px;
+        }
+
+        .pharmacy-name {
+            font-size: 36px;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .pharmacy-tagline {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .pharmacy-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            margin: 10px;
+        }
+
+        /* Payment Methods Section */
+        .payment-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 50px;
+            border-radius: 15px;
+            margin: 50px 0;
+        }
+
+        .payment-section h2 {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .payment-method {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .payment-method:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: white;
+            transform: translateY(-5px);
+        }
+
+        .payment-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .payment-method h4 {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .payment-method p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* Features Section */
+        .features-section {
+            background: white;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin: 50px 0;
+        }
+
+        .features-section h2 {
+            text-align: center;
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 40px;
+            color: #667eea;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .feature-item h4 {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .feature-item p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 10px 0;
+        }
+
+        .social-links {
+            margin: 20px 0;
+        }
+
+        .social-links a {
+            color: white;
+            margin: 0 15px;
+            font-size: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #667eea;
+            transform: scale(1.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 32px;
+            }
+
+            .search-box input {
+                width: 250px;
+            }
+
+            .hero-section {
+                padding: 60px 0 30px 0;
+                margin-top: 70px;
+            }
+
+            .pharmacy-info {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <header class="header">
+        <nav class="navbar navbar-expand-lg header-nav fixed-top">
+            <div class="container-fluid px-4">
+                <a class="navbar-brand" href="index.html">
+                    <img src="images/logo.png" alt="صيدلية الصحة">
+                    <span>صيدلية الصحة</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#home">الرئيسية</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#medicines">الأدوية</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#healthcare">الرعاية الصحية</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#doctors">استشارة الأطباء</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">تواصل معنا</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="profile.html"><i class="fas fa-user"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <div class="container hero-content">
+            <h1>صيدلية الصحة - PharmaCare</h1>
+            <p>توفير الأدوية والمنتجات الصحية بجودة عالية وأسعار منافسة</p>
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="ابحث عن دواء...">
+                <button>بحث</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <div class="container services" id="medicines">
+        <div class="row g-4">
+            <!-- Service 1 -->
+            <div class="col-lg-3 col-md-6">
+                <a href="#" class="text-decoration-none">
+                    <div class="service-card">
+                        <img src="images/medicines.jpg" alt="الأدوية">
+                        <div class="service-card-body">
+                            <div class="service-card-title">الأدوية</div>
+                            <span class="discount-badge">خصم حتى 20%</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="col-lg-3 col-md-6">
+                <a href="#" class="text-decoration-none">
+                    <div class="service-card">
+                        <img src="images/healthcare.jpg" alt="الرعاية الصحية">
+                        <div class="service-card-body">
+                            <div class="service-card-title">الرعاية الصحية</div>
+                            <span class="discount-badge">خصم حتى 50%</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="col-lg-3 col-md-6">
+                <a href="#" class="text-decoration-none">
+                    <div class="service-card">
+                        <img src="images/lab-tests.jpg" alt="الفحوصات المخبرية">
+                        <div class="service-card-body">
+                            <div class="service-card-title">الفحوصات المخبرية</div>
+                            <span class="discount-badge">خصم حتى 30%</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="col-lg-3 col-md-6">
+                <a href="#" class="text-decoration-none">
+                    <div class="service-card">
+                        <img src="images/vitamins.jpg" alt="الفيتامينات والمكملات">
+                        <div class="service-card-body">
+                            <div class="service-card-title">الفيتامينات والمكملات</div>
+                            <span class="discount-badge">خصم حتى 25%</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pharmacy Information Section -->
+    <div class="container">
+        <div class="pharmacy-info">
+            <div class="pharmacy-header">
+                <img src="images/pharmacy-logo.png" alt="شعار صيدلية الصحة" class="pharmacy-logo">
+                <h2 class="pharmacy-name"> صيدلية الرافعيPharmaCare</h2>
+                <p class="pharmacy-tagline">أفضل صيدلية أونلاين في المنطقة</p>
+                <div>
+                    <span class="pharmacy-badge"><i class="fas fa-check-circle"></i> معتمدة وموثوقة</span>
+                    <span class="pharmacy-badge"><i class="fas fa-truck"></i> توصيل سريع</span>
+                    <span class="pharmacy-badge"><i class="fas fa-shield-alt"></i> آمنة تماماً</span>
+                </div>
+            </div>
+            <div class="row text-center mt-5">
+                <div class="col-md-4">
+                    <img src="images/pharmacy-store.jpg" alt="صورة الصيدلية" class="img-fluid rounded mb-3" style="height: 250px; object-fit: cover;">
+                    <h4>منتجاتنا</h4>
+                    <p>تشكيلة واسعة من الأدوية والمنتجات الصحية الأصلية</p>
+                </div>
+                <div class="col-md-4">
+                    <img src="images/team.jpg" alt="فريق الصيدلية" class="img-fluid rounded mb-3" style="height: 250px; object-fit: cover;">
+                    <h4>فريقنا</h4>
+                    <p>متخصصون مؤهلون وذو خبرة عالية</p>
+                </div>
+                <div class="col-md-4">
+                    <img src="images/delivery.jpg" alt="التوصيل" class="img-fluid rounded mb-3" style="height: 250px; object-fit: cover;">
+                    <h4>التوصيل السريع</h4>
+                    <p>توصيل آمن وسريع لباب منزلك</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Methods Section -->
+    <div class="container-fluid payment-section">
+        <div class="container">
+            <h2>طرق الدفع المتاحة</h2>
+            <div class="row">
+                <!-- Credit Card -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="payment-method">
+                        <div class="payment-icon">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <h4>بطاقة الائتمان</h4>
+                        <p>ادفع بسهولة باستخدام بطاقتك الائتمانية أو الخصم</p>
+                    </div>
+                </div>
+
+                <!-- Digital Wallet -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="payment-method">
+                        <div class="payment-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h4>المحفظة الرقمية</h4>
+                        <p>ادفع من خلال تطبيقات المحافظ الرقمية المشهورة</p>
+                    </div>
+                </div>
+
+                <!-- Bank Transfer -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="payment-method">
+                        <div class="payment-icon">
+                            <i class="fas fa-bank"></i>
+                        </div>
+                        <h4>التحويل البنكي</h4>
+                        <p>حول الأموال مباشرة من حسابك البنكي</p>
+                    </div>
+                </div>
+
+                <!-- Cash on Delivery -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="payment-method">
+                        <div class="payment-icon">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <h4>الدفع عند الاستلام</h4>
+                        <p>ادفع النقود عند استلام طلبك</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="container features-section">
+        <h2>مميزاتنا</h2>
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-check-double"></i>
+                    </div>
+                    <h4>منتجات أصلية</h4>
+                    <p>جميع منتجاتنا أصلية وموثوقة ومعتمدة من وزارة الصحة</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h4>توصيل سريع</h4>
+                    <p>توصيل في نفس اليوم في المناطق المختارة</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h4>آمان تام</h4>
+                    <p>معاملات آمنة وحماية كاملة لبيانات العملاء</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h4>خدمة العملاء</h4>
+                    <p>فريق دعم متاح 24/7 لمساعدتك</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-money-bill-alt"></i>
+                    </div>
+                    <h4>أسعار منافسة</h4>
+                    <p>أفضل الأسعار مع عروض وخصومات مستمرة</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h4>جودة مضمونة</h4>
+                    <p>ضمان الجودة وسياسة استرجاع سهلة</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="container" style="margin: 50px 0; padding: 50px; background: white; border-radius: 15px; text-align: center;" id="contact">
+        <h2 style="color: #667eea; margin-bottom: 30px;">تواصل معنا</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <i class="fas fa-phone" style="font-size: 36px; color: #667eea; margin-bottom: 15px;"></i>
+                <h4>الهاتف</h4>
+                <p>+966 50 123 4567</p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <i class="fas fa-envelope" style="font-size: 36px; color: #667eea; margin-bottom: 15px;"></i>
+                <h4>البريد الإلكتروني</h4>
+                <p>info@pharmacare.sa</p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <i class="fas fa-map-marker-alt" style="font-size: 36px; color: #667eea; margin-bottom: 15px;"></i>
+                <h4>العنوان</h4>
+                <p>الرياض - المملكة العربية السعودية</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <h3 style="color: #667eea; margin-bottom: 20px;">صيدلية الصحة - PharmaCare</h3>
+        <p>&copy; 2024 جميع الحقوق محفوظة. صيدلية الصحة</p>
+        <p>معتمدة من وزارة الصحة | موثوقة ومرخصة</p>
+        
+        <div class="social-links">
+            <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+
+        <p style="margin-top: 20px; font-size: 12px; opacity: 0.8;">
+            تذكير: يرجى استشارة الطبيب قبل تناول أي دواء. جميع الأدوية المباعة تحتاج إلى وصفة طبية
+        </p>
+    </footer>
+
+</body>
+
+</html>
